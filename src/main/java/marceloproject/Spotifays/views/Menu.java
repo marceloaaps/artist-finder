@@ -5,18 +5,23 @@ import marceloproject.Spotifays.dtos.ArtistDTO;
 import marceloproject.Spotifays.models.Artist;
 import marceloproject.Spotifays.models.enums.ArtistType;
 import marceloproject.Spotifays.services.ArtistService;
+import marceloproject.Spotifays.services.MusicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import javax.lang.model.type.ArrayType;
 import java.util.Scanner;
+import java.util.SortedMap;
 
 @Component
 public class Menu {
 
     @Autowired
     private ArtistService artistService;
+
+    @Autowired
+    private MusicService musicService;
 
     public Menu() {
     }
@@ -28,6 +33,7 @@ public class Menu {
 
         System.out.println("Qual operação deseja realizar?");
         System.out.println("1 - Adicionar artista");
+        System.out.println("2 - Adicionar musica");
 
         var switchNumber = sc.nextInt();
 
@@ -51,6 +57,16 @@ public class Menu {
 
                 artistService.insertArtist(artistDTO);
 
+            case 2:
+                System.out.println("Nome da Música");
+                var musicName = sc.nextLine();
+                System.out.println("Duração da musica (minutos e segundos)");
+                var musicDuration = sc.nextLine();
+                System.out.println("Avaliação da música");
+                var musicRating = sc.nextLine();
+
         }
+
+
     }
 }
