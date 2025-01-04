@@ -36,73 +36,80 @@ public class Menu {
 
         int switchNumber = sc.nextInt();
 
-        switch(switchNumber){
+        switch (switchNumber) {
             case 1:
-                sc.next();
+                sc.nextLine(); // Consumir quebra de linha pendente
 
-                System.out.println("Nome do Artista");
+                System.out.println("Nome do Artista:");
                 var artistName = sc.nextLine();
-                System.out.println("Idade do Artista");
+                System.out.println("Idade do Artista:");
                 var artistAge = sc.nextLine();
-                System.out.println("Onde o artista nasceu");
+                System.out.println("Onde o artista nasceu:");
                 var artistWasBorn = sc.nextLine();
-                System.out.println("Biografia do artista");
+                System.out.println("Biografia do artista:");
                 var artistBiography = sc.nextLine();
-                System.out.print("Qual o tipo dele? \n 1 - Solo \n 2 -  Dupla \n 3 - Trio \n 4 -  Banda");
+                System.out.print("Qual o tipo dele? \n 1 - Solo \n 2 - Dupla \n 3 - Trio \n 4 - Banda\n");
                 int typeCode = sc.nextInt();
+                sc.nextLine(); // Consumir quebra de linha pendente
 
                 ArtistType artistType = ArtistType.fromCode(typeCode);
-
                 ArtistDTO artistDTO = new ArtistDTO(artistName, artistWasBorn, artistAge, artistBiography, artistType);
-
                 artistService.insertArtist(artistDTO);
+                break;
 
             case 2:
-
                 List<Artist> artistList = new ArrayList<>();
 
-                System.out.println("Nome da Música");
-                var musicName = "Runaway";
-                System.out.println("Duração da musica (minutos e segundos)");
-                var musicDuration = "4:30";
-                System.out.println("Avaliação da música");
-                var musicRating = 8.50;
-                System.out.println("Quantidade de features que essa musica tem");
-                var featureQuantity = 1;
+                System.out.println("Nome da Música:");
+                var musicName = sc.nextLine();
+                System.out.println("Duração da música (minutos e segundos):");
+                var musicDuration = sc.nextLine();
+                System.out.println("Avaliação da música:");
+                var musicRating = sc.nextDouble();
+                sc.nextLine();
+                System.out.println("Quantidade de features que essa música tem:");
+                var featureQuantity = sc.nextInt();
+                sc.nextLine(); // Consumir quebra de linha pendente
 
-                for (int i = 0; i<=featureQuantity; i++){
-
-                    System.out.println("Digite o nome do artista que voce deseja adicionar na musica: ");
-                    String name = "Kanye";
+                for (int i = 0; i < featureQuantity; i++) {
+                    System.out.println("Digite o nome do artista que você deseja adicionar na música:");
+                    var name = sc.nextLine();
 
                     List<Tuple> foundArtist = artistService.findArtistByName(name);
 
-                    foundArtist.stream().forEach(f -> {
-                                var idFound = f.get(0, Long.class);
-                                var nameFound = f.get(1, String.class);
-                                System.out.println("ID: " + idFound + " - Name: " + nameFound + "\n");
-                            });
+                    foundArtist.forEach(f -> {
+                        var idFound = f.get(0, Long.class);
+                        var nameFound = f.get(1, String.class);
+                        System.out.println("ID: " + idFound + " - Name: " + nameFound);
+                    });
 
-                        System.out.println("Se o artista foi encontrado, digite SIM, senao, digite NAO");
-                        var verifyFound = "SIM";
+                    System.out.println("Se o artista foi encontrado, digite SIM, senão, digite NAO:");
+                    var verifyFound = sc.nextLine();
 
-                        if (Objects.equals(verifyFound, "NAO")){
-                            return;
-                        }
+                    if ("NAO".equalsIgnoreCase(verifyFound)) {
+                        continue;
+                    }
 
-                        System.out.println("Qual o ID desse artista?");
-                        var verifyCode = sc.nextLong();
+                    System.out.println("Qual o ID desse artista?");
+                    var verifyCode = sc.nextLong();
+                    sc.nextLine(); // Consumir quebra de linha pendente
 
-                        Artist artist = artistService.findById(verifyCode);
-                        System.out.println(artist.getName());
-
+                    Artist artist = artistService.findById(verifyCode);
+                    if (artist != null) {
+                        System.out.println("Artista encontrado: " + artist.getName());
                         artistList.add(artist);
-
-
-                    MusicDTO musicDTO = new MusicDTO(musicName, musicDuration, musicRating, artistList);
-                    musicService.insertMusic(musicDTO);
-
+                    } else {
+                        System.out.println("Artista não encontrado com o ID fornecido.");
+                    }
                 }
+
+                MusicDTO musicDTO = new MusicDTO(musicName, musicDuration, musicRating, artistList);
+                musicService.insertMusic(musicDTO);
+                break;
+
+            default:
+                System.out.println("Opção inválida.");
+                break;
         }
     }
 }
