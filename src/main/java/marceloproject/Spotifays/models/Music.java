@@ -19,13 +19,14 @@ public class Music {
     @ManyToOne
     @JoinColumn(name = "album_id")
     private Album album;
-    private String musicName;
+    private String name;
     @ManyToMany
     @JoinTable(
             name = "music_artist",
             joinColumns = @JoinColumn(name = "music_id"),
             inverseJoinColumns = @JoinColumn(name = "artist_id")
     )
+
     private List<Artist> featuredArtists;
     private String timeDurantion;
     private Double musicRating;
@@ -49,12 +50,12 @@ public class Music {
         this.album = album;
     }
 
-    public String getMusicName() {
-        return musicName;
+    public String getName() {
+        return name;
     }
 
-    public void setMusicName(String musicName) {
-        this.musicName = musicName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getTimeDurantion() {

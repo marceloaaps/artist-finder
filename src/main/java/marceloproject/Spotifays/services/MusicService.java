@@ -20,13 +20,23 @@ public class MusicService {
         List<Artist> featuredList = musicDTO.featuredArtists();
 
         Music music = new Music();
-        music.setMusicName(musicDTO.name());
+        music.setName(musicDTO.name());
         music.setTimeDurantion(musicDTO.timeDuration());
         music.setMusicRating(musicDTO.musicRating());
 
         featuredList.stream().forEach(f -> music.addFeaturedArtist(featuredList));
 
         repository.save(music);
+
+    }
+
+    public List<Music> findMusicByName(String name){
+
+        if (findMusicByName(name).isEmpty()) {
+            System.out.println("Musica não encontrada, retornando null");
+            return null;
+        }
+        return repository.findByNameContainingOrderByIdAsc(name);
 
     }
 

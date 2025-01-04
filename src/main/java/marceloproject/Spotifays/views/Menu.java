@@ -5,6 +5,7 @@ import jakarta.persistence.Tuple;
 import marceloproject.Spotifays.dtos.ArtistDTO;
 import marceloproject.Spotifays.dtos.MusicDTO;
 import marceloproject.Spotifays.models.Artist;
+import marceloproject.Spotifays.models.Music;
 import marceloproject.Spotifays.models.enums.ArtistType;
 import marceloproject.Spotifays.services.ArtistService;
 import marceloproject.Spotifays.services.MusicService;
@@ -25,7 +26,7 @@ public class Menu {
     public Menu() {
     }
 
-    public void showMenu(){
+    public void showMenu() {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Bem vindo ao Spotifays! ");
@@ -38,9 +39,8 @@ public class Menu {
         int switchNumber = sc.nextInt();
 
         switch (switchNumber) {
-            case 1:
+            case 1 -> {
                 sc.nextLine();
-
                 System.out.println("Nome do Artista:");
                 var artistName = sc.nextLine();
                 System.out.println("Idade do Artista:");
@@ -52,18 +52,14 @@ public class Menu {
                 System.out.print("Qual o tipo dele? \n 1 - Solo \n 2 - Dupla \n 3 - Trio \n 4 - Banda\n");
                 int typeCode = sc.nextInt();
                 sc.nextLine();
-
                 ArtistType artistType = ArtistType.fromCode(typeCode);
                 ArtistDTO artistDTO = new ArtistDTO(artistName, artistWasBorn, artistAge, artistBiography, artistType);
                 artistService.insertArtist(artistDTO);
-                break;
-
-            case 2:
+            }
+            case 2 -> {
                 sc.nextLine();
-
                 System.out.println("Nome da Música:");
                 var musicName = sc.nextLine();
-
                 System.out.println("Duração da música (minutos e segundos):");
                 var musicDuration = sc.nextLine();
                 System.out.println("Avaliação da música:");
@@ -72,7 +68,6 @@ public class Menu {
                 System.out.println("Quantidade de features que essa música tem:");
                 var featureQuantity = sc.nextInt();
                 sc.nextLine();
-
                 List<Artist> artistList = new ArrayList<>();
                 for (int i = 0; i < featureQuantity; i++) {
                     System.out.println("Digite o nome do artista que você deseja adicionar na música:");
@@ -105,27 +100,52 @@ public class Menu {
                         System.out.println("Artista não encontrado com o ID fornecido.");
                     }
                 }
-
                 MusicDTO musicDTO = new MusicDTO(musicName, musicDuration, musicRating, artistList);
                 musicService.insertMusic(musicDTO);
-                break;
+            }
+            case 3 -> {
 
+                List<Music> musicList = new ArrayList<>();
 
-            case 3:
                 sc.nextLine();
 
                 System.out.println("Qual o nome do álbum?");
                 var albumName = sc.nextLine();
 
-                System.out.println("Esse álbum pertence a qual artista presente no sistema?");
-                artistService.findAll();
+                List<Artist> allArtistsList = artistService.findAll();
+                allArtistsList.forEach(a -> System.out.println("ID: " + a.getId() + " - Nome: " + a.getName()));
+
+                System.out.println("Esse álbum pertence a qual artista presente no sistema? Por ID");
+                var artistId = sc.nextInt() - 1;
+
+                Artist artistFound = allArtistsList.get(artistId);
+                System.out.println(artistFound.getName());
+
+                System.out.println("Quantas músicas tem nesse álbum?");
+                var musicQuantity = sc.nextInt();
+
+                for (int i = 0; i <= musicQuantity; i++) {
+
+                    System.out.println("Qual o nome da música que você deseja adicionar a esse álbum?");
+                    var musicFound = sc.nextLine();
+
+                    List<Music> musicFoundList = musicService.findMusicByName(musicFound);
+
+                    musicFoundList.forEach(m -> System.out.println("ID: " + m.getId() + " - Nome: " + m.getName()));
+
+                    System.out.println("Qual das acima?");
+                    var musicCertain = sc.nextInt();
+
+                    Music musicCertainFound = musicFoundList.get(musicCertain);
+
+                    System.out.println(musicCertainFound.toString());
+
+                    musicList.add(musicCertainFound);
+
+                }
 
 
-
-
-            default:
-                System.out.println("Opção inválida.");
-                break;
+            }
         }
     }
 }
