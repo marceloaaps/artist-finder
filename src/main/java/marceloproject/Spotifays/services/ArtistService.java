@@ -40,5 +40,10 @@ public class ArtistService {
                 .orElseThrow(() -> new EntityNotFoundException("Artist not found with ID: " + id));
     }
 
+    public List<Artist> findAll(){
+        return repository.findAll();
+
+    }
+
 
 }

@@ -12,6 +12,8 @@ import java.util.Optional;
 @Repository
 public interface ArtistRepository extends JpaRepository<Artist, Long> {
 
+    @Override
+    List<Artist> findAll();
 
     @Query("SELECT a.id, a.name FROM Artist a WHERE a.name LIKE CONCAT(:name, '%')")
     List<Tuple> findArtistByName(String name);

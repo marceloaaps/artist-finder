@@ -33,12 +33,13 @@ public class Menu {
         System.out.println("Qual operação deseja realizar?");
         System.out.println("1 - Adicionar artista");
         System.out.println("2 - Adicionar musica");
+        System.out.println("3 -  Adicionar álbum");
 
         int switchNumber = sc.nextInt();
 
         switch (switchNumber) {
             case 1:
-                sc.nextLine(); // Consumir quebra de linha pendente
+                sc.nextLine();
 
                 System.out.println("Nome do Artista:");
                 var artistName = sc.nextLine();
@@ -50,7 +51,7 @@ public class Menu {
                 var artistBiography = sc.nextLine();
                 System.out.print("Qual o tipo dele? \n 1 - Solo \n 2 - Dupla \n 3 - Trio \n 4 - Banda\n");
                 int typeCode = sc.nextInt();
-                sc.nextLine(); // Consumir quebra de linha pendente
+                sc.nextLine();
 
                 ArtistType artistType = ArtistType.fromCode(typeCode);
                 ArtistDTO artistDTO = new ArtistDTO(artistName, artistWasBorn, artistAge, artistBiography, artistType);
@@ -58,10 +59,11 @@ public class Menu {
                 break;
 
             case 2:
-                List<Artist> artistList = new ArrayList<>();
+                sc.nextLine();
 
                 System.out.println("Nome da Música:");
                 var musicName = sc.nextLine();
+
                 System.out.println("Duração da música (minutos e segundos):");
                 var musicDuration = sc.nextLine();
                 System.out.println("Avaliação da música:");
@@ -69,8 +71,9 @@ public class Menu {
                 sc.nextLine();
                 System.out.println("Quantidade de features que essa música tem:");
                 var featureQuantity = sc.nextInt();
-                sc.nextLine(); // Consumir quebra de linha pendente
+                sc.nextLine();
 
+                List<Artist> artistList = new ArrayList<>();
                 for (int i = 0; i < featureQuantity; i++) {
                     System.out.println("Digite o nome do artista que você deseja adicionar na música:");
                     var name = sc.nextLine();
@@ -92,7 +95,7 @@ public class Menu {
 
                     System.out.println("Qual o ID desse artista?");
                     var verifyCode = sc.nextLong();
-                    sc.nextLine(); // Consumir quebra de linha pendente
+                    sc.nextLine();
 
                     Artist artist = artistService.findById(verifyCode);
                     if (artist != null) {
@@ -106,6 +109,19 @@ public class Menu {
                 MusicDTO musicDTO = new MusicDTO(musicName, musicDuration, musicRating, artistList);
                 musicService.insertMusic(musicDTO);
                 break;
+
+
+            case 3:
+                sc.nextLine();
+
+                System.out.println("Qual o nome do álbum?");
+                var albumName = sc.nextLine();
+
+                System.out.println("Esse álbum pertence a qual artista presente no sistema?");
+                artistService.findAll();
+
+
+
 
             default:
                 System.out.println("Opção inválida.");
