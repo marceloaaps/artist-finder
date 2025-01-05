@@ -1,7 +1,5 @@
 package marceloproject.Spotifays.models.enums;
 
-import marceloproject.Spotifays.dtos.ArtistDTO;
-
 public enum ArtistType {
     SOLO(1),
     DUO(2),

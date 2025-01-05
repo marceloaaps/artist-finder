@@ -34,7 +34,11 @@ public class ArtistService {
     }
 
     public List<Tuple> findArtistByName(String name){
-        return repository.findArtistByName(name);
+        List<Tuple> artists = repository.findArtistByName(name);
+        if (artists.isEmpty()) {
+            throw new EntityNotFoundException("Artista não encontrado com o nome: " + name);
+        }
+        return artists;
     }
 
     public Artist findById(Long id) {
@@ -46,10 +50,8 @@ public class ArtistService {
         return repository.findAllByOrderByIdAsc();
     }
 
-    public void insertAlbum(Album album){
-
-
-
+    @Override
+    public String toString() {
+        return super.toString();
     }
-
 }

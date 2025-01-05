@@ -30,4 +30,8 @@ public class AlbumService {
 
         musicList.forEach(music -> musicService.saveMusicAlbum(music.getId(), savedAlbum));
     }
+
+    public List<Album> findAlbumByArtist(Long id){
+        return repository.findAlbumsByArtistId(id);
+    }
 }
