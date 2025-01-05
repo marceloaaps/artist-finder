@@ -16,8 +16,7 @@ public class AlbumService {
     AlbumRepository repository;
 
     @Autowired
-    ArtistService artistService;
-
+    MusicService musicService;
 
     public void insertAlbum(AlbumDTO albumDTO){
         List<Music> musicList = albumDTO.musicList();
@@ -27,7 +26,8 @@ public class AlbumService {
         album.setArtist(albumDTO.artist());
         album.addMusicListToAlbum(musicList);
 
-        repository.save(album);
+        Album savedAlbum = repository.save(album);
 
+        musicList.forEach(music -> musicService.saveMusicAlbum(music.getId(), savedAlbum));
     }
 }

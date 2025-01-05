@@ -1,6 +1,7 @@
 package marceloproject.Spotifays.services;
 
 import marceloproject.Spotifays.dtos.MusicDTO;
+import marceloproject.Spotifays.models.Album;
 import marceloproject.Spotifays.models.Artist;
 import marceloproject.Spotifays.models.Music;
 import marceloproject.Spotifays.repositories.MusicRepository;
@@ -34,6 +35,13 @@ public class MusicService {
 
         return repository.findByNameContainingOrderByIdAsc(name);
 
+    }
+
+    public void saveMusicAlbum(Long musicId, Album album) {
+        Music music = repository.findById(musicId)
+                .orElseThrow(() -> new IllegalArgumentException("Musica não encontrada: " + musicId));
+        music.setAlbum(album);
+        repository.save(music);
     }
 
 
