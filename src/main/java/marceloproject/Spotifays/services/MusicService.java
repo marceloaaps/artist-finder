@@ -32,10 +32,6 @@ public class MusicService {
 
     public List<Music> findMusicByName(String name){
 
-        if (findMusicByName(name).isEmpty()) {
-            System.out.println("Musica não encontrada, retornando null");
-            return null;
-        }
         return repository.findByNameContainingOrderByIdAsc(name);
 
     }

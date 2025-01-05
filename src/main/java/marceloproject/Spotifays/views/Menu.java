@@ -2,11 +2,13 @@ package marceloproject.Spotifays.views;
 
 
 import jakarta.persistence.Tuple;
+import marceloproject.Spotifays.dtos.AlbumDTO;
 import marceloproject.Spotifays.dtos.ArtistDTO;
 import marceloproject.Spotifays.dtos.MusicDTO;
 import marceloproject.Spotifays.models.Artist;
 import marceloproject.Spotifays.models.Music;
 import marceloproject.Spotifays.models.enums.ArtistType;
+import marceloproject.Spotifays.services.AlbumService;
 import marceloproject.Spotifays.services.ArtistService;
 import marceloproject.Spotifays.services.MusicService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class Menu {
 
     @Autowired
     private MusicService musicService;
+
+    @Autowired
+    AlbumService albumService;
 
     public Menu() {
     }
@@ -119,12 +124,12 @@ public class Menu {
                 var artistId = sc.nextInt() - 1;
 
                 Artist artistFound = allArtistsList.get(artistId);
-                System.out.println(artistFound.getName());
+                System.out.println(artistFound.getName() + artistFound.getAge());
 
                 System.out.println("Quantas músicas tem nesse álbum?");
                 var musicQuantity = sc.nextInt();
 
-                for (int i = 0; i <= musicQuantity; i++) {
+                for (int i = 1; i <= musicQuantity; i++) {
 
                     System.out.println("Qual o nome da música que você deseja adicionar a esse álbum?");
                     var musicFound = sc.nextLine();
@@ -134,16 +139,17 @@ public class Menu {
                     musicFoundList.forEach(m -> System.out.println("ID: " + m.getId() + " - Nome: " + m.getName()));
 
                     System.out.println("Qual das acima?");
-                    var musicCertain = sc.nextInt();
+                    var musicCertain = sc.nextInt() - 1;
 
                     Music musicCertainFound = musicFoundList.get(musicCertain);
 
                     System.out.println(musicCertainFound.toString());
 
                     musicList.add(musicCertainFound);
-
                 }
 
+                AlbumDTO albumDTO = new AlbumDTO(albumName, musicList, artistFound);
+                albumService.insertAlbum(albumDTO);
 
             }
         }

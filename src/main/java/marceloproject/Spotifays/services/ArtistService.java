@@ -3,6 +3,7 @@ package marceloproject.Spotifays.services;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.Tuple;
 import marceloproject.Spotifays.dtos.ArtistDTO;
+import marceloproject.Spotifays.models.Album;
 import marceloproject.Spotifays.models.Artist;
 import marceloproject.Spotifays.models.Music;
 import marceloproject.Spotifays.repositories.ArtistRepository;
@@ -45,6 +46,10 @@ public class ArtistService {
         return repository.findAllByOrderByIdAsc();
     }
 
+    public void insertAlbum(Album album){
 
+
+
+    }
 
 }

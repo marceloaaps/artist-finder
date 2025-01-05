@@ -1,6 +1,7 @@
 package marceloproject.Spotifays.repositories;
 
 import jakarta.persistence.Tuple;
+import marceloproject.Spotifays.models.Album;
 import marceloproject.Spotifays.models.Artist;
 import marceloproject.Spotifays.models.Music;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,5 +20,7 @@ public interface ArtistRepository extends JpaRepository<Artist, Long> {
     List<Tuple> findArtistByName(String name);
 
     Optional<Artist> findById(Long aLong);
+
+
 
 }
