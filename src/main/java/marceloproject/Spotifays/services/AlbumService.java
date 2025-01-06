@@ -32,6 +32,10 @@ public class AlbumService {
     }
 
     public List<Album> findAlbumByArtist(Long id){
+        List<Album> albums = repository.findAlbumsByArtistId(id);
+        if(albums.isEmpty()){
+            throw new IllegalArgumentException("Esse artista não possui nenhum álbum");
+        }
         return repository.findAlbumsByArtistId(id);
     }
 

@@ -33,24 +33,39 @@ public class Menu {
         System.out.println("Bem vindo ao Spotifays! ");
         Scanner sc = new Scanner(System.in);
         boolean running = true;
+        menuService.showOptions();
 
         do {
-            menuService.showOptions();
+
             if (sc.hasNextInt()) {
                 int switchNumber = sc.nextInt();
                 switch (switchNumber) {
-                    case 1 -> menuService.insertArtist();
-                    case 2 -> menuService.insertMusic();
-                    case 3 -> menuService.insertAlbum();
-                    case 4 -> menuService.listArtists();
+                    case 1 -> {
+                        menuService.insertArtist(); menuService.showOptions();
+                    }
+                    case 2 -> {
+                        menuService.insertMusic();
+                        menuService.showOptions();
+                    }
+                    case 3 -> {
+                        menuService.insertAlbum();
+                        menuService.showOptions();
+                    }
+                    case 4 -> {
+                        menuService.listArtists();
+                        menuService.showOptions();
+                    }
                     default -> {
                         System.out.println("Informação inválida, favor digitar novamente");
+
                     }
                 }
             } else {
                 System.out.println("Entrada inválida, favor digitar novamente");
+                sc.nextLine();
             }
         } while (running);
+        sc.close();
     }
 
 }
