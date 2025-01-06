@@ -3,9 +3,7 @@ package marceloproject.Spotifays.services;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.Tuple;
 import marceloproject.Spotifays.dtos.ArtistDTO;
-import marceloproject.Spotifays.models.Album;
 import marceloproject.Spotifays.models.Artist;
-import marceloproject.Spotifays.models.Music;
 import marceloproject.Spotifays.repositories.ArtistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,6 +50,8 @@ public class ArtistService {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "ArtistService{" +
+                "repository=" + repository +
+                '}';
     }
 }

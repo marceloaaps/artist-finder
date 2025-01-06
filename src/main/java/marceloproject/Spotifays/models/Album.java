@@ -3,6 +3,7 @@ package marceloproject.Spotifays.models;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "tb_album")
@@ -14,7 +15,7 @@ public class Album {
 
     private String albumName;
 
-    @OneToMany (mappedBy = "album")
+    @OneToMany (mappedBy = "album", fetch = FetchType.EAGER)
     private List<Music> musicList;
 
     @ManyToOne
@@ -54,4 +55,13 @@ public class Album {
         this.musicList = musicList;
     }
 
+    @Override
+    public String toString() {
+        return "Album{" +
+                "albumName='" + albumName + '\'' +
+                ", Id=" + Id +
+                ", musicList=" + musicList.stream().map(Music::getName).collect(Collectors.toList()) +
+                ", artist=" + artist.getName() + // Apenas o nome do artista
+                '}';
+    }
 }

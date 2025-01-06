@@ -19,10 +19,10 @@ public class Artist {
     private Integer numberOfHits;
     private String biography;
 
-    @ManyToMany(mappedBy = "featuredArtists")
+    @ManyToMany(mappedBy = "featuredArtists", fetch = FetchType.EAGER)
     private List<Music> featuredIn;
 
-    @OneToMany(mappedBy = "artist")
+    @OneToMany(mappedBy = "artist", fetch = FetchType.EAGER)
     private List<Album> albumList;
 
     public Long getId() {
@@ -80,4 +80,15 @@ public class Artist {
     public void setBiography(String biography) {
         this.biography = biography;
     }
+
+    @Override
+    public String toString() {
+        return "Artist{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", albumCount=" + (albumList != null ? albumList.size() : 0) + // Número de álbuns em vez de detalhes completos
+                '}';
+    }
+
+
 }

@@ -44,5 +44,10 @@ public class MusicService {
         repository.save(music);
     }
 
-
+    @Override
+    public String toString() {
+        return "MusicService{" +
+                "repository=" + repository +
+                '}';
+    }
 }

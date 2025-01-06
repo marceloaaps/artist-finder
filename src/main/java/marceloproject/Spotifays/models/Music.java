@@ -77,4 +77,14 @@ public class Music {
     public void addFeaturedArtist(List<Artist> artistList){
         this.featuredArtists = artistList;
     }
+
+    @Override
+    public String toString() {
+        return "Music{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                '}';
+    }
+
+
 }

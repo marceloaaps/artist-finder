@@ -34,4 +34,9 @@ public class AlbumService {
     public List<Album> findAlbumByArtist(Long id){
         return repository.findAlbumsByArtistId(id);
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
