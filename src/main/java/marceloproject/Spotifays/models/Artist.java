@@ -13,6 +13,10 @@ public class Artist {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
+    @Convert(converter = ArtistType.class)
+
+    @Enumerated(EnumType.STRING)
     private ArtistType artistType;
     private String age;
     private String countryWasBorn;

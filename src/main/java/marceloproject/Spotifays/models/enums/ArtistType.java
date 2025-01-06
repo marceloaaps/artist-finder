@@ -12,12 +12,16 @@ public enum ArtistType {
         this.code = code;
     }
 
-    public static ArtistType fromCode (int code){
+    public int getCode() {
+        return code;
+    }
+
+    public static ArtistType fromCode(int code) {
         for (ArtistType type : values()) {
             if (type.code == code) {
                 return type;
             }
         }
-        throw new IllegalArgumentException("Tipo de artista inválido");
+        throw new IllegalArgumentException("Tipo de artista inválido: " + code);
     }
 }
