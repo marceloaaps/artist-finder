@@ -11,7 +11,7 @@ public class Album {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     private String albumName;
 
@@ -24,11 +24,11 @@ public class Album {
 
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        id = id;
     }
 
     public String getAlbumName() {
@@ -59,7 +59,7 @@ public class Album {
     public String toString() {
         return "Album{" +
                 "albumName='" + albumName + '\'' +
-                ", Id=" + Id +
+                ", Id=" + id +
                 ", musicList=" + musicList.stream().map(Music::getName).collect(Collectors.toList()) +
                 ", artist=" + artist.getName() + // Apenas o nome do artista
                 '}';
