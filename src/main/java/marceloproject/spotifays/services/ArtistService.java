@@ -1,10 +1,10 @@
-package marceloproject.Spotifays.services;
+package marceloproject.spotifays.services;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.Tuple;
-import marceloproject.Spotifays.dtos.ArtistDTO;
-import marceloproject.Spotifays.models.Artist;
-import marceloproject.Spotifays.repositories.ArtistRepository;
+import marceloproject.spotifays.dtos.ArtistDTO;
+import marceloproject.spotifays.models.Artist;
+import marceloproject.spotifays.repositories.ArtistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

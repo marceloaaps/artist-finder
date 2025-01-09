@@ -1,6 +1,6 @@
-package marceloproject.Spotifays.dtos;
+package marceloproject.spotifays.dtos;
 
-import marceloproject.Spotifays.models.Artist;
+import marceloproject.spotifays.models.Artist;
 
 import java.util.List;
 

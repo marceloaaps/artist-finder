@@ -1,8 +1,8 @@
-package marceloproject.Spotifays.models;
+package marceloproject.spotifays.models;
 
 import jakarta.persistence.*;
-import marceloproject.Spotifays.models.enums.ArtistType;
-import marceloproject.Spotifays.models.enums.ArtistTypeConverter;
+import marceloproject.spotifays.models.enums.ArtistType;
+import marceloproject.spotifays.models.enums.ArtistTypeConverter;
 
 import java.util.List;
 

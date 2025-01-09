@@ -1,6 +1,6 @@
-package marceloproject.Spotifays.repositories;
+package marceloproject.spotifays.repositories;
 
-import marceloproject.Spotifays.models.Music;
+import marceloproject.spotifays.models.Music;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

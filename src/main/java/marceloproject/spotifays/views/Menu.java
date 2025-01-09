@@ -1,7 +1,6 @@
-package marceloproject.Spotifays.views;
+package marceloproject.spotifays.views;
 
-import marceloproject.Spotifays.services.MenuService;
-import org.springframework.beans.factory.annotation.Autowired;
+import marceloproject.spotifays.services.MenuService;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -9,7 +8,7 @@ import java.util.*;
 @Component
 public class Menu {
 
-    @Autowired
+
     MenuService menuService;
 
     public void showMenu() {

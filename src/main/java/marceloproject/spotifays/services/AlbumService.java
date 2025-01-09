@@ -1,9 +1,9 @@
-package marceloproject.Spotifays.services;
+package marceloproject.spotifays.services;
 
-import marceloproject.Spotifays.dtos.AlbumDTO;
-import marceloproject.Spotifays.models.Album;
-import marceloproject.Spotifays.models.Music;
-import marceloproject.Spotifays.repositories.AlbumRepository;
+import marceloproject.spotifays.dtos.AlbumDTO;
+import marceloproject.spotifays.models.Album;
+import marceloproject.spotifays.models.Music;
+import marceloproject.spotifays.repositories.AlbumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

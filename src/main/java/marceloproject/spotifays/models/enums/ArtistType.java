@@ -1,4 +1,4 @@
-package marceloproject.Spotifays.models.enums;
+package marceloproject.spotifays.models.enums;
 
 public enum ArtistType {
 

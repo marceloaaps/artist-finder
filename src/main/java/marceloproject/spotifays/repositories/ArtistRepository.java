@@ -1,7 +1,7 @@
-package marceloproject.Spotifays.repositories;
+package marceloproject.spotifays.repositories;
 
 import jakarta.persistence.Tuple;
-import marceloproject.Spotifays.models.Artist;
+import marceloproject.spotifays.models.Artist;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

@@ -1,6 +1,6 @@
-package marceloproject.Spotifays.dtos;
+package marceloproject.spotifays.dtos;
 
-import marceloproject.Spotifays.models.enums.ArtistType;
+import marceloproject.spotifays.models.enums.ArtistType;
 
 public record ArtistDTO(String name,
                         String countryWasBorn,

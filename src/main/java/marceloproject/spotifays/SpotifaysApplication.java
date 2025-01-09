@@ -1,12 +1,10 @@
-package marceloproject.Spotifays;
+package marceloproject.spotifays;
 
-import marceloproject.Spotifays.views.Menu;
+import marceloproject.spotifays.views.Menu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import static java.awt.SystemColor.menu;
 
 @SpringBootApplication
 public class SpotifaysApplication implements CommandLineRunner {

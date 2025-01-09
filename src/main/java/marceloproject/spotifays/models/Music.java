@@ -1,4 +1,4 @@
-package marceloproject.Spotifays.models;
+package marceloproject.spotifays.models;
 
 import jakarta.persistence.*;
 

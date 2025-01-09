@@ -1,13 +1,13 @@
-package marceloproject.Spotifays.services;
+package marceloproject.spotifays.services;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.Tuple;
-import marceloproject.Spotifays.dtos.AlbumDTO;
-import marceloproject.Spotifays.dtos.ArtistDTO;
-import marceloproject.Spotifays.dtos.MusicDTO;
-import marceloproject.Spotifays.models.Artist;
-import marceloproject.Spotifays.models.Music;
-import marceloproject.Spotifays.models.enums.ArtistType;
+import marceloproject.spotifays.dtos.AlbumDTO;
+import marceloproject.spotifays.dtos.ArtistDTO;
+import marceloproject.spotifays.dtos.MusicDTO;
+import marceloproject.spotifays.models.Artist;
+import marceloproject.spotifays.models.Music;
+import marceloproject.spotifays.models.enums.ArtistType;
 import org.springframework.beans.InvalidPropertyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
