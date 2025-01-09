@@ -9,10 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Service class for managing album-related operations.
- * Provides functionality to handle album insertion and retrieval by artist.
- */
 @Service
 public class AlbumService {
 

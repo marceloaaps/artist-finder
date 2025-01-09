@@ -1,18 +1,6 @@
 package marceloproject.Spotifays.views;
 
-import jakarta.persistence.EntityNotFoundException;
-import jakarta.persistence.Tuple;
-import marceloproject.Spotifays.dtos.AlbumDTO;
-import marceloproject.Spotifays.dtos.ArtistDTO;
-import marceloproject.Spotifays.dtos.MusicDTO;
-import marceloproject.Spotifays.models.Artist;
-import marceloproject.Spotifays.models.Music;
-import marceloproject.Spotifays.models.enums.ArtistType;
-import marceloproject.Spotifays.services.AlbumService;
-import marceloproject.Spotifays.services.ArtistService;
 import marceloproject.Spotifays.services.MenuService;
-import marceloproject.Spotifays.services.MusicService;
-import org.springframework.beans.InvalidPropertyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -24,10 +12,6 @@ public class Menu {
     @Autowired
     MenuService menuService;
 
-
-    public Menu() {
-    }
-
     public void showMenu() {
 
         System.out.println("Bem vindo ao Spotifays! ");
@@ -35,7 +19,7 @@ public class Menu {
         boolean running = true;
         menuService.showOptions();
 
-        do {
+        while (running) {
 
             if (sc.hasNextInt()) {
                 int switchNumber = sc.nextInt();
@@ -55,16 +39,17 @@ public class Menu {
                         menuService.listArtists();
                         menuService.showOptions();
                     }
-                    default -> {
-                        System.out.println("Informação inválida, favor digitar novamente");
-
+                    case 5 -> {
+                        System.out.println("Saindo do sistema...");
+                        running = false;
                     }
+                    default -> System.out.println("Informação inválida, favor digitar novamente");
                 }
             } else {
                 System.out.println("Entrada inválida, favor digitar novamente");
                 sc.nextLine();
             }
-        } while (running);
+        }
         sc.close();
     }
 

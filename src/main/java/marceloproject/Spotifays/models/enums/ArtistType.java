@@ -1,6 +1,7 @@
 package marceloproject.Spotifays.models.enums;
 
 public enum ArtistType {
+
     SOLO(1),
     DUO(2),
     TRIO(3),
@@ -22,6 +23,6 @@ public enum ArtistType {
                 return type;
             }
         }
-        throw new IllegalArgumentException("Tipo de artista inválido: " + code);
+        throw new IllegalArgumentException("Código inválido para ArtistType: " + code);
     }
 }

@@ -1,12 +1,8 @@
 package marceloproject.Spotifays.models;
 
-
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Entity
 @Table(name = "tb_music")

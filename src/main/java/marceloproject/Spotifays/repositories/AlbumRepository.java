@@ -1,7 +1,6 @@
 package marceloproject.Spotifays.repositories;
 
 import marceloproject.Spotifays.models.Album;
-import marceloproject.Spotifays.models.Artist;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

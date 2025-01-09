@@ -2,6 +2,7 @@ package marceloproject.Spotifays.models;
 
 import jakarta.persistence.*;
 import marceloproject.Spotifays.models.enums.ArtistType;
+import marceloproject.Spotifays.models.enums.ArtistTypeConverter;
 
 import java.util.List;
 
@@ -14,9 +15,7 @@ public class Artist {
     private Long id;
     private String name;
 
-    @Convert(converter = ArtistType.class)
-
-    @Enumerated(EnumType.STRING)
+    @Convert(converter = ArtistTypeConverter.class)
     private ArtistType artistType;
     private String age;
     private String countryWasBorn;
