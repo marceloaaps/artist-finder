@@ -3,7 +3,6 @@ package marceloproject.spotifays.models;
 import jakarta.persistence.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "tb_album")
@@ -21,15 +20,6 @@ public class Album {
     @ManyToOne
     @JoinColumn(name = "artist_id")
     private Artist artist;
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        id = id;
-    }
 
     public String getAlbumName() {
         return albumName;
@@ -60,8 +50,8 @@ public class Album {
         return "Album{" +
                 "albumName='" + albumName + '\'' +
                 ", Id=" + id +
-                ", musicList=" + musicList.stream().map(Music::getName).collect(Collectors.toList()) +
-                ", artist=" + artist.getName() + // Apenas o nome do artista
+                ", musicList=" + musicList.stream().map(Music::getName).toList() +
+                ", artist=" + artist.getName() +
                 '}';
     }
 }
